@@ -1,0 +1,205 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/* ---------------------------------------------------------------------- */
+/* Design tokens                                                          */
+/* ---------------------------------------------------------------------- */
+@theme {
+  --font-sans: "Inter", "system-ui", "sans-serif";
+  --font-display: "Space Grotesk", "Inter", "system-ui", "sans-serif";
+  --font-mono: "JetBrains Mono", "ui-monospace", "SFMono-Regular", "monospace";
+
+  /* Signal indigo — the app's signature accent */
+  --color-brand-50: #eef1fd;
+  --color-brand-100: #dde3fb;
+  --color-brand-200: #b7c2f6;
+  --color-brand-300: #8d9fef;
+  --color-brand-400: #5f76e7;
+  --color-brand-500: #3452e1;
+  --color-brand-600: #263fc4;
+  --color-brand-700: #1f329e;
+  --color-brand-800: #1c2b7e;
+  --color-brand-900: #192564;
+
+  /* Warm amber — drafts / highlights */
+  --color-amber-50: #fef8ec;
+  --color-amber-400: #f5b23a;
+  --color-amber-500: #ec9b12;
+  --color-amber-600: #c67c0a;
+
+  --shadow-glow: 0 8px 24px -8px rgb(52 82 225 / 0.45);
+}
+
+/* ---------------------------------------------------------------------- */
+/* Base                                                                    */
+/* ---------------------------------------------------------------------- */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-[#F6F7FB] text-[#12141C] dark:bg-[#0A0D16] dark:text-[#E7E9F3] antialiased;
+    font-feature-settings: "cv11", "ss01";
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-tight text-[#0F1220] dark:text-white;
+  }
+
+  a {
+    @apply text-brand-600 hover:text-brand-700 dark:text-brand-300 dark:hover:text-brand-200 transition-colors duration-150;
+  }
+
+  ::selection {
+    @apply bg-brand-200 text-brand-900;
+  }
+
+  /* Consistent, visible keyboard focus everywhere */
+  :focus-visible {
+    @apply outline-none ring-2 ring-brand-500 ring-offset-2 ring-offset-[#F6F7FB] dark:ring-offset-[#0A0D16] rounded-md;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gray-300 dark:bg-gray-700 rounded-full;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* ---------------------------------------------------------------------- */
+/* Components                                                              */
+/* ---------------------------------------------------------------------- */
+@layer components {
+  .container-custom {
+    @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Subtle dot-grid texture used behind auth pages / empty states — a
+     quiet nod to the product's "#" / grid identity, not a gradient blob. */
+  .bg-dot-grid {
+    background-image: radial-gradient(currentColor 1px, transparent 1px);
+    background-size: 22px 22px;
+    color: rgb(0 0 0 / 0.06);
+  }
+  .dark .bg-dot-grid {
+    color: rgb(255 255 255 / 0.06);
+  }
+
+  /* Cards ---------------------------------------------------------------- */
+  .card {
+    @apply bg-white dark:bg-[#12172A] rounded-2xl shadow-[0_1px_2px_rgb(15_23_42/0.06)] border border-gray-200/80 dark:border-white/10 p-6 transition-all duration-200;
+  }
+  .card-hover {
+    @apply hover:-translate-y-0.5 hover:shadow-[0_16px_32px_-16px_rgb(15_23_42/0.18)] hover:border-brand-200 dark:hover:border-brand-800;
+  }
+
+  /* Buttons ---------------------------------------------------------------- */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2.5 border border-transparent
+      text-sm font-semibold rounded-xl text-white bg-brand-500
+      shadow-[0_1px_2px_rgb(15_23_42/0.08)]
+      hover:bg-brand-600 hover:shadow-glow
+      active:scale-[0.98]
+      disabled:opacity-50 disabled:pointer-events-none disabled:hover:shadow-none
+      transition-all duration-150 cursor-pointer select-none;
+  }
+  .btn-outline {
+    @apply bg-transparent text-brand-600 border-gray-300 hover:bg-brand-50 hover:border-brand-300 hover:text-brand-700 hover:shadow-none
+      dark:text-brand-300 dark:border-white/15 dark:hover:bg-white/5 dark:hover:border-brand-400;
+  }
+  .btn-ghost {
+    @apply bg-transparent text-gray-600 border-transparent shadow-none hover:bg-gray-100 hover:shadow-none
+      dark:text-gray-300 dark:hover:bg-white/5;
+  }
+  .btn-danger {
+    @apply bg-red-600 hover:bg-red-700 hover:shadow-[0_8px_24px_-8px_rgb(220_38_38/0.45)];
+  }
+  .btn-sm {
+    @apply px-3 py-1.5 text-xs rounded-lg;
+  }
+  .btn-icon {
+    @apply p-2.5 rounded-xl;
+  }
+
+  /* Inputs ---------------------------------------------------------------- */
+  .input {
+    @apply w-full rounded-xl border border-gray-300 bg-white px-3.5 py-2.5 text-sm text-[#12141C]
+      placeholder:text-gray-400
+      shadow-[0_1px_2px_rgb(15_23_42/0.04)]
+      focus:border-brand-500 focus:ring-2 focus:ring-brand-500/30 focus:outline-none
+      disabled:bg-gray-100 disabled:text-gray-400
+      dark:bg-[#0F1424] dark:border-white/10 dark:text-white dark:placeholder:text-gray-500
+      transition-colors duration-150;
+  }
+  .label {
+    @apply block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1.5;
+  }
+
+  /* Tags / badges ---------------------------------------------------------------- */
+  .tag-pill {
+    @apply inline-flex items-center gap-1 bg-gray-100 dark:bg-white/5 text-gray-700 dark:text-gray-300
+      rounded-full px-3 py-1 text-sm font-medium font-mono
+      hover:bg-brand-50 hover:text-brand-700 dark:hover:bg-brand-500/10 dark:hover:text-brand-300
+      border border-transparent hover:border-brand-200 dark:hover:border-brand-800
+      transition-colors duration-150;
+  }
+  .badge-draft {
+    @apply inline-flex items-center gap-1 text-xs font-semibold px-2.5 py-1 rounded-full bg-amber-50 text-amber-700 dark:bg-amber-500/10 dark:text-amber-400;
+  }
+  .badge-published {
+    @apply inline-flex items-center gap-1 text-xs font-semibold px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400;
+  }
+
+  /* States ---------------------------------------------------------------- */
+  .loading-spinner {
+    @apply flex flex-col justify-center items-center gap-3 h-48 text-gray-500 dark:text-gray-400;
+  }
+  .error-message {
+    @apply flex items-start gap-3 bg-red-50 dark:bg-red-500/10 text-red-700 dark:text-red-300
+      border border-red-200 dark:border-red-500/20 p-4 rounded-xl text-sm;
+  }
+
+  .skeleton {
+    @apply relative overflow-hidden bg-gray-200 dark:bg-white/10 rounded-lg;
+  }
+  .skeleton::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    transform: translateX(-100%);
+    background: linear-gradient(90deg, transparent, rgb(255 255 255 / 0.5), transparent);
+    animation: shimmer 1.6s infinite;
+  }
+  .dark .skeleton::after {
+    background: linear-gradient(90deg, transparent, rgb(255 255 255 / 0.08), transparent);
+  }
+  @keyframes shimmer {
+    100% { transform: translateX(100%); }
+  }
+
+  .prose-hn {
+    @apply prose prose-slate dark:prose-invert max-w-none
+      prose-headings:font-display prose-headings:tracking-tight
+      prose-a:text-brand-600 dark:prose-a:text-brand-300 prose-a:no-underline hover:prose-a:underline
+      prose-img:rounded-xl prose-code:font-mono
+      prose-pre:rounded-xl prose-pre:shadow-md
+      prose-blockquote:border-brand-400 prose-blockquote:not-italic prose-blockquote:font-normal;
+  }
+}
