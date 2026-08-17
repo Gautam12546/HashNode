@@ -1,45 +1,57 @@
 # HashNode - Developer-First Blogging Platform
 
-HashNode is a full-stack blogging platform built for developers to write, format, and share technical content using Markdown.
+HashNode is a full-stack developer-focused blogging platform built for developers to write, format, publish, and share technical content using Markdown.
 
-It features JWT authentication, post CRUD operations, tag management, a public feed, user profiles, image uploads via Cloudinary, and a modern responsive UI built with Tailwind CSS v4.
+The platform provides JWT-based authentication, complete post CRUD operations, tag management, a public feed, user profiles, image uploads through Cloudinary, Markdown rendering with syntax highlighting, notifications, dark mode, and a responsive UI built with Tailwind CSS v4.
 
-This project was built as a solo capstone using the MERN stack (MongoDB, Express, React, Node.js) and follows the PRD provided by the Full Stack Development program.
+This project was built as a **solo capstone project** using the **MERN stack (MongoDB, Express.js, React.js, Node.js)** and follows the requirements defined in the Full Stack Development program PRD.
 
 ---
 
 ## ✨ Features
 
 ### 🔐 User Authentication
+
 - User registration and login
 - JWT-based authentication
 - Protected routes
 - Password hashing using bcrypt
 - Persistent authentication sessions
+- Authentication context for managing user state
 
 ### 📝 Post Management
+
 - Create, read, update, and delete posts
 - Markdown-based content editor
+- Markdown preview
+- Syntax highlighting for code blocks
 - Draft and published post status
 - Automatic post slug generation
 - Cover image support
 - Tags associated with posts
 - Automatically generated post excerpts
+- Author information
+- Published posts displayed in the public feed
 
 ### 🏷️ Tags System
+
 - Create and reuse existing tags
 - Unique tag slugs
 - Tag-based post filtering
-- Tag pages
+- Dedicated tag pages
 - Display post counts for each tag
+- Associate multiple tags with posts
 
 ### 📰 Public Feed
+
 - View all published posts
 - Newest posts displayed first
 - Search posts by title
 - Pagination support
+- Post cards with title, excerpt, author, tags, and cover image
 
 ### 👤 User Profiles
+
 - Public user profiles
 - Display published posts
 - User dashboard
@@ -48,32 +60,41 @@ This project was built as a solo capstone using the MERN stack (MongoDB, Express
 - Upload profile avatar
 
 ### 🖼️ Image Upload
-- Upload images using multipart/form-data
+
+- Multipart/form-data image uploads
 - Cloudinary integration
 - Cover image uploads
-- Avatar uploads
+- Profile avatar uploads
 - Multer memory storage
 - Maximum upload size of 5 MB
 
 ### 🔔 Notifications
-- Success and error toast notifications
+
+- Success notifications
+- Error notifications
+- User-friendly feedback messages
 - Powered by `sonner`
 
 ### 🌙 Dark Mode
+
 - Dark mode support
-- Persistent theme preference using `localStorage`
+- Persistent theme preference
+- Theme preference stored using `localStorage`
 
 ### 📱 Responsive Design
+
 - Mobile-first UI
 - Responsive layouts
 - Responsive navigation
-- Optimized for desktop, tablet, and mobile screens
+- Desktop, tablet, and mobile support
 
 ### ❌ Error Handling
+
 - Custom 404 page
 - API error handling
 - Loading states
 - User-friendly error messages
+- Centralized backend error middleware
 
 ---
 
@@ -82,9 +103,12 @@ This project was built as a solo capstone using the MERN stack (MongoDB, Express
 | Layer | Technologies |
 |---|---|
 | **Frontend** | React 18, Vite, Tailwind CSS v4, React Router v6, Axios, React Markdown, React Syntax Highlighter, Sonner |
-| **Backend** | Node.js, Express, MongoDB, Mongoose, JWT, bcryptjs, Cloudinary, Multer |
+| **Backend** | Node.js, Express.js, MongoDB, Mongoose, JWT, bcryptjs, Cloudinary, Multer |
 | **Database** | MongoDB Atlas / Local MongoDB |
+| **Authentication** | JSON Web Tokens (JWT), bcryptjs |
+| **Image Storage** | Cloudinary |
 | **Development Tools** | Nodemon, ESLint |
+| **Version Control** | Git, GitHub |
 
 ---
 
