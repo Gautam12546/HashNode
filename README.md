@@ -217,3 +217,59 @@ HashNode/
 ├── .gitignore
 └── README.md
 ```
+## 🚀 Getting Started
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/Gautam12546/HashNode.git
+cd HashNode
+
+Backend Setup
+
+Navigate to the backend directory:
+
+cd server
+
+Install the required dependencies:
+
+npm install
+
+Create a .env file inside the server directory and add the required environment variables.
+
+Start the backend server:
+
+npm run dev
+
+The backend will run locally on:
+
+http://localhost:5000
+Backend Deployment
+
+The backend is deployed on Railway.
+
+3. Frontend Setup
+
+Open a new terminal and navigate to the frontend directory:
+
+cd client
+
+Install the required dependencies:
+
+npm install
+
+Create a .env file inside the client directory:
+
+VITE_API_URL=http://localhost:5000
+
+Start the frontend development server:
+
+npm run dev
+
+The frontend will normally be available at:
+
+http://localhost:5173
+Frontend Deployment
+
+The frontend is deployed on Vercel.
+
