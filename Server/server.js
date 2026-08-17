@@ -11,8 +11,11 @@ const app = express();
 
 // Middleware
 app.use(cors({
-  origin: "http://localhost:5173",
-  credentials: true 
+    origin: [
+        "http://localhost:5173",
+        "https://hash-node-two.vercel.app"
+    ],
+    credentials: true
 }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
